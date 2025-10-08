@@ -1,0 +1,203 @@
+﻿<project id = project version = 2 program = "Perfect Automation" expanded = 2 paver = 2.7.1 winver = "2.8/6.0.6001" >
+   <prjname >Play macro</>
+   <children >
+      <_ tag = 0 id = taskbottom disabled = 1 >
+         <desc ></>
+         <state >hide</>
+         <restart >0</>
+         <autoclose >uncheck</>
+         <autoshut >hide</>
+         <about >0</>
+      </>
+      <_ tag = 0 id = taskstate >
+         <desc ></>
+         <caption >Play macro record</>
+         <state >show</>
+         <left ></>
+         <top ></>
+         <width ></>
+         <height >300</>
+      </>
+      <_ tag = 0 id = varset >
+         <desc ></>
+         <varlist >
+            <rows >
+               <_ >
+                  <varname >pamfile</>
+                  <value >D:\Trying new saoft\records\251007-173756.pam</>
+               </>
+               <_ >
+                  <varname >exit</>
+                  <value >Exit</>
+               </>
+               <_ >
+                  <varname >fastmax</>
+                  <value >As fast as possible</>
+               </>
+               <_ >
+                  <varname >fast2</>
+                  <value >2x faster</>
+               </>
+               <_ >
+                  <varname >slow2</>
+                  <value >2x slower</>
+               </>
+               <_ >
+                  <varname >slow3</>
+                  <value >3x slower</>
+               </>
+               <_ >
+                  <varname >default</>
+                  <value >Default</>
+               </>
+               <_ >
+                  <varname >fast3</>
+                  <value >3x faster</>
+               </>
+               <_ >
+                  <varname >speed</>
+                  <value >default</>
+               </>
+               <_ >
+                  <varname >repeat</>
+                  <value >1</>
+               </>
+               <_ >
+                  <varname >continue</>
+                  <value >Play</>
+               </>
+            </>
+         </>
+      </>
+      <_ tag = 0 id = form disabled = 0 >
+         <desc ></>
+         <hide >1</>
+         <ctrllist >
+            <rows >
+               <_ >
+                  <ctrl >text</>
+                  <text >This program will play macro record. You can press Ctrl-Esc to stop playing.</>
+                  <varname ></>
+                  <list ></>
+                  <width ></>
+               </>
+               <_ >
+                  <ctrl >text</>
+                  <text >Original macro: #pamfile#</>
+                  <varname ></>
+                  <list ></>
+                  <width ></>
+               </>
+               <_ >
+                  <ctrl >text</>
+                  <text ></>
+                  <varname ></>
+                  <list ></>
+                  <width ></>
+               </>
+               <_ disabled = 0 >
+                  <ctrl >combobox</>
+                  <text >Playback speed</>
+                  <varname >speed</>
+                  <list >default,fastmax,fast2,fast3,slow2,slow3</>
+                  <width >200</>
+               </>
+               <_ disabled = 0 >
+                  <ctrl >edit</>
+                  <text >Repeat</>
+                  <varname >repeat</>
+                  <list >1,2,3,4,5,6,7,8,9,10</>
+                  <width >100</>
+               </>
+               <_ disabled = 0 >
+                  <ctrl >buttons</>
+                  <text ></>
+                  <varname >btn</>
+                  <list >continue,exit</>
+                  <width >150</>
+               </>
+            </>
+         </>
+      </>
+      <_ tag = 0 id = if expanded = 2 disabled = 0 >
+         <children >
+            <_ tag = 0 id = exit >
+               <desc ></>
+               <extype >exit</>
+               <code >1</>
+               <msg ></>
+            </>
+         </>
+         <desc ></>
+         <condlist >
+            <rows >
+               <_ >
+                  <varname >btn</>
+                  <iftype >equali</>
+                  <value >exit</>
+                  <orand >and</>
+               </>
+            </>
+         </>
+      </>
+      <_ tag = 0 id = taskstate disabled = 0 >
+         <desc ></>
+         <caption ></>
+         <state >min</>
+         <left ></>
+         <top ></>
+         <width ></>
+         <height ></>
+      </>
+      <_ tag = 0 id = sources expanded = 2 >
+         <children >
+            <_ tag = 0 id = empty ></>
+         </>
+         <desc ></>
+         <ext >1</>
+         <src >include : $"$autoexepath$\cmds\sources\playmacro.g"
+global : buf macrodata = '\<D:\Trying new saoft\records\251007-173756.pam>'</>
+      </>
+      <_ tag = 0 id = sources expanded = 2 >
+         <children >
+            <_ tag = 0 id = empty ></>
+         </>
+         <desc ></>
+         <ext >0</>
+         <src >str vspeed
+uint speed = 1
+defmacro.get( "speed", vspeed )
+switch vspeed
+{
+    case "fastmax" : speed = 0
+    case "fast2" : speed = -2
+    case "fast3" : speed = -3
+    case "slow2" : speed = 2
+    case "slow3" : speed = 3
+}
+playmacrodata( macrodata, speed, str( defmacro[ "repeat"] ))</>
+      </>
+      <_ tag = 0 id = exit >
+         <desc ></>
+         <extype >exit</>
+         <code >1</>
+         <msg ></>
+      </>
+      <_ tag = 0 id = playmacro disabled = 0 >
+         <desc ></>
+         <file ></>
+         <speed >default</>
+         <repeat >1</>
+         <embed >0</>
+      </>
+   </>
+   <desc ></>
+   <exefile >251007-173756.exe</>
+   <outdir >D:\Trying new saoft\records</>
+   <icofile ></>
+   <state >hide</>
+   <author ></>
+   <website ></>
+   <version ></>
+   <runadmin ></>
+</>
